@@ -1,7 +1,11 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
 const App = () => {
   return (
     <section>
-      <p>Home</p>
+      <Navbar />
+      <Outlet />
     </section>
   );
 };

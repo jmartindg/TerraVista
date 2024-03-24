@@ -5,16 +5,23 @@ import "./index.css";
 
 // Pages
 import App from "./App.tsx";
+import Home from "./pages/Home.tsx";
 import About from "./pages/About.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/about",
-    element: <About />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+    ],
   },
 ]);
 
