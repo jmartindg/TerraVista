@@ -6,6 +6,9 @@ export default {
       container: {
         center: true,
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     },
   },
   daisyui: {
