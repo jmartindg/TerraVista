@@ -3,7 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import CountryCard from "../components/CountryCard";
 import Hero from "../components/Hero";
-import Skeleton from "../components/Skeleton";
+import Skeleton from "../components/loaders/Skeleton";
 
 interface Country {
   name: {
@@ -11,6 +11,7 @@ interface Country {
   };
   flags: {
     svg: string;
+    alt: string;
   };
   capital: string;
   population: number;
@@ -31,7 +32,7 @@ const Home = () => {
         `https://restcountries.com/v3.1/name/${query}?fields=name,capital,population,region,flags`
       );
 
-      setCountries(response.data || []);
+      setCountries(response.data);
       setTimeout(() => setLoading(false), 2000);
     } catch (error) {
       toast.error("No countries found for " + query);
@@ -46,7 +47,7 @@ const Home = () => {
         const response = await axios.get(
           "https://restcountries.com/v3.1/all?fields=name,capital,population,region,flags"
         );
-        setCountries(response.data || []);
+        setCountries(response.data);
         setTimeout(() => setLoading(false), 2000);
       } catch (error: unknown) {
         toast.error("Oh no! An error occurred." + error);

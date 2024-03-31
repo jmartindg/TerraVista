@@ -7,6 +7,7 @@ import "./index.css";
 import App from "./App.tsx";
 import Home from "./pages/Home.tsx";
 import About from "./pages/About.tsx";
+import Country from "./pages/country/Country.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/country/:name",
+        element: <Country />,
       },
     ],
   },

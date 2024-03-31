@@ -1,23 +1,32 @@
+import { Link } from "react-router-dom";
+
 type CountryCardProps = {
   countryName: {
     common: string;
   };
+  flags: {
+    svg: string;
+    alt: string;
+  };
   population: number;
   region: string;
   capital: string;
-  flags: {
-    svg: string;
-  };
 };
 
 const CountryCard = ({ countryName, population, region, capital, flags }: CountryCardProps) => {
   return (
     <article className="card bg-base-100 shadow-xl rounded">
-      <figure>
-        <img src={flags.svg} className="w-full aspect-video object-cover" alt={countryName.common} />
+      <figure className="hover:opacity-80 transition duration-100">
+        <Link to={`/country/${countryName.common}`}>
+          <img src={flags.svg} className="w-full aspect-video object-cover" alt={flags.alt} />
+        </Link>
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{countryName.common}</h2>
+        <Link to={`/country/${countryName.common}`}>
+          <h2 className="card-title hover:underline hover:underline-offset-8 hover:text-primary transition duration-100">
+            {countryName.common}
+          </h2>
+        </Link>
         <div>
           <p className="font-medium">
             Population: <span className="font-normal">{population.toLocaleString()}</span>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Image from "../../public/world-map-min.png";
+import Image from "../assets/image/world-map-min.png";
 
 interface HeroProps {
   onSearch: (query: string) => void;
