@@ -9,3 +9,7 @@
     font-family: "Inter", "sans-serif";
   }
 }
+
+.leaflet-container {
+  @apply min-h-[50vh] md:min-h-[70vh];
+}
