@@ -91,6 +91,11 @@ const Country = () => {
     fetchSingleCountry();
   }, [name]);
 
+  // Scroll to top when component loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="container px-4 py-16">
       {loading ? (
