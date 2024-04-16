@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SingleSkeleton from "../../components/loaders/SingleSkeleton";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 // Icons
@@ -43,6 +44,11 @@ const Country = () => {
   const [capitalLatlng, setCapitalLatlng] = useState<number[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { name } = useParams();
+
+  const ICON = icon({
+    iconUrl: "/marker.png",
+    iconSize: [32, 32],
+  });
 
   useEffect(() => {
     const fetchSingleCountry = async () => {
@@ -151,7 +157,7 @@ const Country = () => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker position={[latlng[0], latlng[1]]}>
+              <Marker icon={ICON} position={[latlng[0], latlng[1]]}>
                 <Popup>{countries[0]?.name.official}</Popup>
               </Marker>
             </MapContainer>
@@ -164,7 +170,7 @@ const Country = () => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker position={[capitalLatlng[0], capitalLatlng[1]]}>
+              <Marker icon={ICON} position={[capitalLatlng[0], capitalLatlng[1]]}>
                 <Popup>{countries[0]?.capital}</Popup>
               </Marker>
             </MapContainer>
